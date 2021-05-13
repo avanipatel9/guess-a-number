@@ -7,6 +7,8 @@ import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
 import BodyText from '../components/BodyText';
 import TitleText from '../components/TitleText';
+import MainButton from '../components/MainButton';
+
 const StartGameScreen = props => {
 
     const [enteredValue, setEnteredValue] = useState('');
@@ -24,11 +26,11 @@ const StartGameScreen = props => {
 
     const confirmInputHandler = () => {
         const chosenNumber = parseInt(enteredValue);
-        if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99){
+        if (isNaN(chosenNumber) || chosenNumber <= 0 || chosenNumber > 99) {
             Alert.alert(
-                'Invalid Number!', 
-                'Number has to be a number between 1 and 99.', 
-                [{text: 'Okay', style: 'destructive', onPress: resetInputHandler}]
+                'Invalid Number!',
+                'Number has to be a number between 1 and 99.',
+                [{ text: 'Okay', style: 'destructive', onPress: resetInputHandler }]
             );
             return;
         }
@@ -40,18 +42,20 @@ const StartGameScreen = props => {
 
     let confirmedOutput;
 
-    if(confirmed) {
-        confirmedOutput = 
-        <Card style={styles.summaryContainer}>
-            <BodyText>You selected</BodyText>
-            <NumberContainer>{selectedNumber}</NumberContainer>
-            <Button title="START GAME" onPress={() => props.onStartGame(selectedNumber)} />
-        </Card>
-        
+    if (confirmed) {
+        confirmedOutput =
+            <Card style={styles.summaryContainer}>
+                <BodyText>You selected</BodyText>
+                <NumberContainer>{selectedNumber}</NumberContainer>
+                <MainButton
+                    onPress={() => props.onStartGame(selectedNumber)}
+                >START GAME</MainButton>
+            </Card>
+
     }
 
     return (
-        <TouchableWithoutFeedback onPress={()=> {
+        <TouchableWithoutFeedback onPress={() => {
             Keyboard.dismiss();
         }}>
             <View style={styles.screen}>
