@@ -11,7 +11,9 @@ const GameOverScreen = props => {
             <TitleText>The Game is Over!</TitleText>
             <View style={styles.imageContainer}>
                 <Image
-                    source={require('../assets/success.png')}
+                    fadeDuration={1000}
+                    //source={require('../assets/success.png')}
+                    source={{uri: 'https://p0.piqsels.com/preview/759/45/157/nepal-dingboche-mountain-himalaya.jpg'}}
                     style={styles.image}
                     resizeMode="cover"
                 />
